@@ -1,0 +1,127 @@
+import React from 'react';
+import { motion as Motion } from 'framer-motion';
+
+const Breakfast = () => {
+  const breakfastItems = [
+    { 
+      id: 1, 
+      name: 'Mexican Omelette', 
+      description: 'Spicy chorizo, jalapeños, cheddar cheese, sour cream', 
+      price: '1495', 
+      image: '/src/assets/images/breakfast/mexican.jpeg' 
+    },
+    { 
+      id: 2, 
+      name: 'Classic Waffles', 
+      description: 'Fresh fruit, maple syrup, whipped cream', 
+      price: '1395', 
+      image: '/src/assets/images/breakfast/waffles.jpeg' 
+    },
+    { 
+      id: 3, 
+      name: 'Scrambled Eggs', 
+      description: 'Fluffy eggs, sourdough toast, cherry tomatoes', 
+      price: '1295', 
+      image: '/src/assets/images/breakfast/scramb.jpeg' 
+    },
+    { 
+      id: 4, 
+      name: 'The Coffee BOOK Omelette', 
+      description: 'Stuffed with mushrooms, spinach, feta cheese', 
+      price: '1495', 
+      image: '/src/assets/images/breakfast/special.jpeg' 
+    },
+    { 
+      id: 5, 
+      name: 'French Toast', 
+      description: 'Brioche, berries, maple syrup, powdered sugar', 
+      price: '1395', 
+      image: '/src/assets/images/breakfast/french-toast.jpg' 
+    },
+    { 
+      id: 6, 
+      name: 'Avocado Toast', 
+      description: 'Sourdough, poached eggs, chili flakes, lemon', 
+      price: '1195', 
+      image: '/src/assets/images/breakfast/avacado.jpeg' 
+    },
+    { 
+      id: 7, 
+      name: 'Pancake Stack', 
+      description: 'Fluffy pancakes, honey butter, fresh berries', 
+      price: '1350', 
+      image: '/src/assets/images/breakfast/pancake-stack.webp' 
+    },
+    { 
+      id: 8, 
+      name: 'Eggs Benedict', 
+      description: 'Poached eggs, ham, hollandaise, English muffin', 
+      price: '1595', 
+      image: '/src/assets/images/breakfast/benedict2.jpeg' 
+    },
+    { 
+      id: 9, 
+      name: 'Breakfast Burrito', 
+      description: 'Scrambled eggs, sausage, cheese, salsa, tortilla', 
+      price: '1450', 
+      image: '/src/assets/images/breakfast/555.jpeg' 
+    }
+  ];
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#FDF6E9] py-16">
+      <div className="container mx-auto px-4 max-w-7xl">
+        
+        {/* Header */}
+        <Motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl md:text-5xl font-serif text-[#4A2C2C] text-center mb-4"
+        >
+          ALL-DAY BREAKFAST
+        </Motion.h1>
+        <p className="text-center text-[#7B4B3A] mb-12">Served fresh from morning till evening</p>
+        
+        {/* 3 Columns Grid */}
+        <Motion.div
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {breakfastItems.map((item) => (
+            <Motion.div
+              key={item.id}
+              variants={fadeUp}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+            >
+              <img 
+                src={item.image} 
+                alt={item.name} 
+                className="w-full h-64 object-cover" 
+              />
+              <div className="p-5 text-center">
+                <h3 className="text-xl font-serif text-[#4A2C2C] mb-1">{item.name}</h3>
+                <p className="text-xs text-[#7B4B3A] mb-3">{item.description}</p>
+                <p className="text-lg text-[#C4A35A] font-medium">RS {item.price}</p>
+              </div>
+            </Motion.div>
+          ))}
+        </Motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default Breakfast;
