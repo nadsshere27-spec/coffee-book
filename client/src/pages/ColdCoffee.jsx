@@ -1,72 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion as Motion } from 'framer-motion';
+import { menuAPI } from '../services/api';
 
 const ColdCoffee = () => {
-  const coldCoffeeItems = [
-    { 
-      id: 1, 
-      name: 'Iced Caramel Latte', 
-      description: 'Espresso, caramel sauce, cold milk over ice', 
-      price: '675', 
-      image: '/images/images/coffee/cold/ice-latte.png' 
-    },
-    { 
-      id: 2, 
-      name: 'Cold Brew', 
-      description: '24-hour slow steeped, served on ice', 
-      price: '575', 
-      image: '/images/images/coffee/cold/cold-brew.png' 
-    },
-    { 
-      id: 3, 
-      name: 'Iced Vanilla Latte', 
-      description: 'Espresso, vanilla syrup, cold milk over ice', 
-      price: '650', 
-      image: '/images/images/coffee/cold/iced-vanilla latte.jpg' 
-    },
-    { 
-      id: 4, 
-      name: 'Iced Mocha', 
-      description: 'Espresso, chocolate sauce, cold milk over ice', 
-      price: '680', 
-      image: '/images/images/coffee/cold/icedd-mocha.png' 
-    },
-    { 
-      id: 5, 
-      name: 'Nitro Cold Brew', 
-      description: 'Smooth nitrogen-infused cold brew', 
-      price: '695', 
-      image: '/images/images/coffee/cold/cold-nitro-brew.webp' 
-    },
-    { 
-      id: 6, 
-      name: 'Iced Capachino', 
-      description: 'Espresso with cold water and ice', 
-      price: '550', 
-      image: '/images/images/coffee/cold/ice-capachino.png' 
-    },
-    { 
-      id: 7, 
-      name: 'Iced Hazelnut Latte', 
-      description: 'Espresso, hazelnut syrup, cold milk over ice', 
-      price: '670', 
-      image: '/images/images/coffee/cold/hazelnut-iced.webp' 
-    },
-    { 
-      id: 8, 
-      name: 'Iced Coconut Latte', 
-      description: 'Espresso, coconut milk, served over ice', 
-      price: '690', 
-      image: '/images/images/coffee/cold/iced-coconut-latte.webp' 
-    },
-    { 
-      id: 9, 
-      name: 'Iced Matcha', 
-      description: 'Blended chocolate, espresso, ice cream', 
-      price: '720', 
-      image: '/images/images/coffee/cold/iced-matcha.jpg' 
-    }
-  ];
+  // Mock data as fallback
+  const mockColdCoffeeItems = React.useMemo(() => [
+    { id: 1, name: 'Iced Caramel Latte', description: 'Espresso, caramel sauce, cold milk over ice', price: '675', image: '/images/images/coffee/cold/ice-latte.png' },
+    { id: 2, name: 'Cold Brew', description: '24-hour slow steeped, served on ice', price: '575', image: '/images/images/coffee/cold/cold-brew.png' },
+    { id: 3, name: 'Iced Vanilla Latte', description: 'Espresso, vanilla syrup, cold milk over ice', price: '650', image: '/images/images/coffee/cold/iced-vanilla latte.jpg' },
+    { id: 4, name: 'Iced Mocha', description: 'Espresso, chocolate sauce, cold milk over ice', price: '680', image: '/images/images/coffee/cold/icedd-mocha.png' },
+    { id: 5, name: 'Nitro Cold Brew', description: 'Smooth nitrogen-infused cold brew', price: '695', image: '/images/images/coffee/cold/cold-nitro-brew.webp' },
+    { id: 6, name: 'Iced Capachino', description: 'Espresso with cold water and ice', price: '550', image: '/images/images/coffee/cold/ice-capachino.png' },
+    { id: 7, name: 'Iced Hazelnut Latte', description: 'Espresso, hazelnut syrup, cold milk over ice', price: '670', image: '/images/images/coffee/cold/hazelnut-iced.webp' },
+    { id: 8, name: 'Iced Coconut Latte', description: 'Espresso, coconut milk, served over ice', price: '690', image: '/images/images/coffee/cold/iced-coconut-latte.webp' },
+    { id: 9, name: 'Iced Matcha', description: 'Matcha green tea with milk over ice', price: '720', image: '/images/images/coffee/cold/iced-matcha.jpg' }
+  ], []);
+
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchColdCoffee = async () => {
+      try {
+        const response = await menuAPI.getByCategory('cold');
+        if (response.data && response.data.data && response.data.data.length > 0) {
+          setItems(response.data.data);
+        } else {
+          setItems(mockColdCoffeeItems);
+        }
+      } catch (err) {
+        console.warn('API failed, using mock data:', err.message);
+        setError(true);
+        setItems(mockColdCoffeeItems);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchColdCoffee();
+  }, [mockColdCoffeeItems]);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -77,6 +49,17 @@ const ColdCoffee = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#FDF6E9] py-16 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#C4A35A] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#7B4B3A]">Loading cold coffee...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FDF6E9] py-16">
@@ -99,9 +82,9 @@ const ColdCoffee = () => {
           variants={staggerContainer}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {coldCoffeeItems.map((item) => (
+          {items.map((item) => (
             <Motion.div
-              key={item.id}
+              key={item.id || item._id}
               variants={fadeUp}
               whileHover={{ y: -5 }}
               className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
@@ -109,7 +92,7 @@ const ColdCoffee = () => {
               <img 
                 src={item.image} 
                 alt={item.name} 
-                className="w-full h-64 object-contain" 
+                className="w-full h-64 object-contain bg-[#FAF1E2] p-2" 
               />
               <div className="p-5 text-center">
                 <h3 className="text-xl font-serif text-[#4A2C2C] mb-1">{item.name}</h3>
@@ -119,6 +102,13 @@ const ColdCoffee = () => {
             </Motion.div>
           ))}
         </Motion.div>
+        
+        {/* Optional: Show indicator when using mock data */}
+        {error && (
+          <p className="text-center text-xs text-[#C4A35A] mt-8">
+            ℹ️ Using demo data (backend not connected)
+          </p>
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
+import { booksAPI } from '../services/api';
 
 const Books = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  // Mock data as fallback
+  const mockBestsellers = React.useMemo(() => [
+    { id: 1, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', series: 'Gods & Monsters (Book 4)', year: '2026', image: '/images/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
+    { id: 2, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', series: 'Thorn: Flame And Thorns (Book 1)', year: '2026', image: '/images/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
+    { id: 3, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', series: 'Cosmere Novel', year: '2026', image: '/images/images/books/horror/Isles-Of-The-Emberdark.png' }
+  ], []);
+
+  const fictionBooks = React.useMemo(() => [
+    { id: 4, title: 'A Little Life', author: 'Hanya Yanagihara', image: '/images/images/books/fiction/A-Little-Life.jfif' },
+    { id: 5, title: 'The Cruel Prince', author: 'Holly Black', series: 'The Folk Of The Air Series (Book 1)', image: '/images/images/books/fiction/The-Cruel-Prince.jfif' },
+    { id: 6, title: 'Powerless', author: 'Lauren Roberts', series: 'The Powerless (Book 1)', image: '/images/images/books/fiction/Powerless.jfif' }
+  ], []);
+
+  const romanceBooks = React.useMemo(() => [
+    { id: 7, title: 'Before the coffee gets cold', author: 'Toshikazu Kawaguchi', image: '/images/images/books/romance/Before the coffee gets cold.jfif' },
+    { id: 8, title: 'Flame And Purple Of Thorns', author: 'Marion Blackwood', image: '/images/images/books/romance/Flame-And-Purple-Of-Thorns.jfif' },
+    { id: 9, title: 'We Who Have No Gods', author: 'Unknown', series: 'The Acheron Order (Book 1)', image: '/images/images/books/romance/We-Who-Have-No-Gods.jfif' }
+  ], []);
+
+  const horrorBooks = React.useMemo(() => [
+    { id: 10, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', image: '/images/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
+    { id: 11, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', image: '/images/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
+    { id: 12, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', image: '/images/images/books/horror/Isles-Of-The-Emberdark.png' }
+  ], []);
+
+  const [bestsellers, setBestsellers] = useState(mockBestsellers);
 
   const categories = [
     { id: 'fiction', name: 'Fiction' },
@@ -13,7 +43,7 @@ const Books = () => {
     { id: 'urdu', name: 'Urdu Books' }
   ];
 
-  // 30 books for each category (only names)
+  // 30 books for each category (only names) — keep as is
   const categoryBooks = {
     fiction: [
       'A Little Life', 'The Cruel Prince', 'Powerless', 'The Wrath Of The Fallen',
@@ -60,6 +90,24 @@ const Books = () => {
     ]
   };
 
+  useEffect(() => {
+    const fetchBestsellers = async () => {
+      setLoading(true);
+      try {
+        const response = await booksAPI.getFeatured();
+        if (response.data && response.data.data && response.data.data.length > 0) {
+          setBestsellers(response.data.data);
+        }
+      } catch (err) {
+        console.warn('API failed, using mock data:', err.message);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBestsellers();
+  }, []);
+
   const handleCategoryClick = (categoryId, categoryName) => {
     setSelectedCategory({ id: categoryId, name: categoryName });
     setShowPopup(true);
@@ -96,32 +144,18 @@ const Books = () => {
     }
   };
 
-  // International Bestsellers - with object-contain (full image visible)
-  const bestsellers = [
-    { id: 1, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', series: 'Gods & Monsters (Book 4)', year: '2026', image: '/images/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
-    { id: 2, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', series: 'Thorn: Flame And Thorns (Book 1)', year: '2026', image: '/images/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
-    { id: 3, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', series: 'Cosmere Novel', year: '2026', image: '/images/images/books/horror/Isles-Of-The-Emberdark.png' }
-  ];
-
-  const fictionBooks = [
-    { id: 4, title: 'A Little Life', author: 'Hanya Yanagihara', image: '/images/images/books/fiction/A-Little-Life.jfif' },
-    { id: 5, title: 'The Cruel Prince', author: 'Holly Black', series: 'The Folk Of The Air Series (Book 1)', image: '/images/images/books/fiction/The-Cruel-Prince.jfif' },
-    { id: 6, title: 'Powerless', author: 'Lauren Roberts', series: 'The Powerless (Book 1)', image: '/images/images/books/fiction/Powerless.jfif' }
-  ];
-
-  const romanceBooks = [
-    { id: 7, title: 'Before the coffee gets cold', author: 'Toshikazu Kawaguchi', image: '/images/images/books/romance/Before the coffee gets cold.jfif' },
-    { id: 8, title: 'Flame And Purple Of Thorns', author: 'Marion Blackwood', image: '/images/images/books/romance/Flame-And-Purple-Of-Thorns.jfif' },
-    { id: 9, title: 'We Who Have No Gods', author: 'Unknown', series: 'The Acheron Order (Book 1)', image: '/images/images/books/romance/We-Who-Have-No-Gods.jfif' }
-  ];
-
-  const horrorBooks = [
-    { id: 10, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', image: '/images/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
-    { id: 11, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', image: '/images/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
-    { id: 12, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', image: '/images/images/books/horror/Isles-Of-The-Emberdark.png' }
-  ];
-
   const currentBooks = selectedCategory ? categoryBooks[selectedCategory.id] || [] : [];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#FDF6E9] py-12 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#C4A35A] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#7B4B3A]">Loading books...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FDF6E9] py-12">
@@ -329,6 +363,13 @@ const Books = () => {
             <span>📸</span> @coffeebook.pk
           </a>
         </div>
+
+        {/* Optional: Show indicator when using mock data */}
+        {error && (
+          <p className="text-center text-xs text-[#C4A35A] mt-4">
+            ℹ️ Using demo data (backend not connected)
+          </p>
+        )}
       </div>
     </div>
   );

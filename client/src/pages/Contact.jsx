@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const fadeUp = {
@@ -48,7 +47,6 @@ const Contact = () => {
     <div className="min-h-screen bg-[#FDF6E9] py-16">
       <div className="container mx-auto px-4 max-w-7xl">
         
-        {/* Header */}
         <Motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,7 +58,6 @@ const Contact = () => {
           We'd love to hear from you. Reach out through any of these channels.
         </p>
 
-        {/* 4 Cards Grid */}
         <Motion.div
           initial="hidden"
           animate="visible"

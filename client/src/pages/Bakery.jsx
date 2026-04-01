@@ -1,72 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion as Motion } from 'framer-motion';
+import { menuAPI } from '../services/api';
 
 const Bakery = () => {
-  const bakeryItems = [
-    { 
-      id: 1, 
-      name: 'Macarons (Per Pc)', 
-      description: 'Delicate French style macarons with ganache, butter cream', 
-      price: '299', 
-      image: '/images/images/bakery/macroons.webp' 
-    },
-    { 
-      id: 2, 
-      name: 'Tres Leches Cake Slice', 
-      description: 'Indulge in our heavenly Tres Leches Cake Slice. Moist sponge', 
-      price: '900', 
-      image: '/images/images/bakery/tres-leches-cake.jpg' 
-    },
-    { 
-      id: 3, 
-      name: 'Lotus Milk Cake Slice', 
-      description: 'A heavenly blend of moist cake with lotus caramel', 
-      price: '900', 
-      image: '/images/images/bakery/lotus-milk-cake.jpg' 
-    },
-    { 
-      id: 4, 
-      name: 'Butter Croissant', 
-      description: 'Flaky, golden, French pastry made with pure butter', 
-      price: '350', 
-      image: '/images/images/bakery/Butter-Croissant.jpg' 
-    },
-    { 
-      id: 5, 
-      name: 'Chocolate Chip Cookie', 
-      description: 'Soft-baked with Belgian dark chocolate chunks', 
-      price: '280', 
-      image: '/images/images/bakery/chocholatechip-cookies.jfif' 
-    },
-    { 
-      id: 6, 
-      name: 'Cinnamon Roll', 
-      description: 'Swirled with brown sugar & cream cheese frosting', 
-      price: '420', 
-      image: '/images/images/bakery/Cinnamon-Roll.jpg' 
-    },
-    { 
-      id: 7, 
-      name: 'Almond Danish', 
-      description: 'Buttery pastry with almond frangipane', 
-      price: '380', 
-      image: '/images/images/bakery/Almond-Danish.jfif' 
-    },
-    { 
-      id: 8, 
-      name: 'Blueberry Muffin', 
-      description: 'Loaded with fresh blueberries, streusel topping', 
-      price: '320', 
-      image: '/images/images/bakery/Blueberry-Muffin.jfif' 
-    },
-    { 
-      id: 9, 
-      name: 'Chocolate Brownie', 
-      description: 'Fudgy, rich, with walnuts', 
-      price: '300', 
-      image: '/images/images/bakery/Chocolate-Brownie.jfif' 
-    }
-  ];
+  // Mock data as fallback
+  const mockBakeryItems = React.useMemo(() => [
+    { id: 1, name: 'Macarons (Per Pc)', description: 'Delicate French style macarons with ganache, butter cream', price: '299', image: '/images/images/bakery/macroons.webp' },
+    { id: 2, name: 'Tres Leches Cake Slice', description: 'Indulge in our heavenly Tres Leches Cake Slice. Moist sponge', price: '900', image: '/images/images/bakery/tres-leches-cake.jpg' },
+    { id: 3, name: 'Lotus Milk Cake Slice', description: 'A heavenly blend of moist cake with lotus caramel', price: '900', image: '/images/images/bakery/lotus-milk-cake.jpg' },
+    { id: 4, name: 'Butter Croissant', description: 'Flaky, golden, French pastry made with pure butter', price: '350', image: '/images/images/bakery/Butter-Croissant.jpg' },
+    { id: 5, name: 'Chocolate Chip Cookie', description: 'Soft-baked with Belgian dark chocolate chunks', price: '280', image: '/images/images/bakery/chocholatechip-cookies.jfif' },
+    { id: 6, name: 'Cinnamon Roll', description: 'Swirled with brown sugar & cream cheese frosting', price: '420', image: '/images/images/bakery/Cinnamon-Roll.jpg' },
+    { id: 7, name: 'Almond Danish', description: 'Buttery pastry with almond frangipane', price: '380', image: '/images/images/bakery/Almond-Danish.jfif' },
+    { id: 8, name: 'Blueberry Muffin', description: 'Loaded with fresh blueberries, streusel topping', price: '320', image: '/images/images/bakery/Blueberry-Muffin.jfif' },
+    { id: 9, name: 'Chocolate Brownie', description: 'Fudgy, rich, with walnuts', price: '300', image: '/images/images/bakery/Chocolate-Brownie.jfif' }
+  ], []);
+
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchBakery = async () => {
+      try {
+        const response = await menuAPI.getByCategory('bakery');
+        if (response.data && response.data.data && response.data.data.length > 0) {
+          setItems(response.data.data);
+        } else {
+          setItems(mockBakeryItems);
+        }
+      } catch (err) {
+        console.warn('API failed, using mock data:', err.message);
+        setError(true);
+        setItems(mockBakeryItems);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBakery();
+  }, [mockBakeryItems]);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -77,6 +49,17 @@ const Bakery = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#FDF6E9] py-16 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#C4A35A] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#7B4B3A]">Loading bakery items...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FDF6E9] py-16">
@@ -99,9 +82,9 @@ const Bakery = () => {
           variants={staggerContainer}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {bakeryItems.map((item) => (
+          {items.map((item) => (
             <Motion.div
-              key={item.id}
+              key={item.id || item._id}
               variants={fadeUp}
               whileHover={{ y: -5 }}
               className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
@@ -109,7 +92,7 @@ const Bakery = () => {
               <img 
                 src={item.image} 
                 alt={item.name} 
-                className="w-full h-56 object-cover" 
+                className="w-full h-56 object-cover bg-[#FAF1E2]" 
               />
               <div className="p-5 text-center">
                 <h3 className="text-xl font-serif text-[#4A2C2C] mb-1">{item.name}</h3>
@@ -119,6 +102,13 @@ const Bakery = () => {
             </Motion.div>
           ))}
         </Motion.div>
+        
+        {/* Optional: Show indicator when using mock data */}
+        {error && (
+          <p className="text-center text-xs text-[#C4A35A] mt-8">
+            ℹ️ Using demo data (backend not connected)
+          </p>
+        )}
       </div>
     </div>
   );
