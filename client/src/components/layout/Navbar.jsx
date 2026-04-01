@@ -31,7 +31,7 @@ const Navbar = () => {
           {/* Logo - Image */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/src/assets/images/logo/cafe-logo-2.png" 
+              src="/images/images/logo/cafe-logo-2.png" 
               alt="Coffee BOOK Logo"
               className="max-h-14 w-auto" 
             />

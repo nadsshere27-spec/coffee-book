@@ -8,63 +8,63 @@ const ColdCoffee = () => {
       name: 'Iced Caramel Latte', 
       description: 'Espresso, caramel sauce, cold milk over ice', 
       price: '675', 
-      image: '/src/assets/images/coffee/cold/ice-latte.png' 
+      image: '/images/images/coffee/cold/ice-latte.png' 
     },
     { 
       id: 2, 
       name: 'Cold Brew', 
       description: '24-hour slow steeped, served on ice', 
       price: '575', 
-      image: '/src/assets/images/coffee/cold/cold-brew.png' 
+      image: '/images/images/coffee/cold/cold-brew.png' 
     },
     { 
       id: 3, 
       name: 'Iced Vanilla Latte', 
       description: 'Espresso, vanilla syrup, cold milk over ice', 
       price: '650', 
-      image: '/src/assets/images/coffee/cold/iced-vanilla latte.jpg' 
+      image: '/images/images/coffee/cold/iced-vanilla latte.jpg' 
     },
     { 
       id: 4, 
       name: 'Iced Mocha', 
       description: 'Espresso, chocolate sauce, cold milk over ice', 
       price: '680', 
-      image: '/src/assets/images/coffee/cold/icedd-mocha.png' 
+      image: '/images/images/coffee/cold/icedd-mocha.png' 
     },
     { 
       id: 5, 
       name: 'Nitro Cold Brew', 
       description: 'Smooth nitrogen-infused cold brew', 
       price: '695', 
-      image: '/src/assets/images/coffee/cold/cold-nitro-brew.webp' 
+      image: '/images/images/coffee/cold/cold-nitro-brew.webp' 
     },
     { 
       id: 6, 
       name: 'Iced Capachino', 
       description: 'Espresso with cold water and ice', 
       price: '550', 
-      image: '/src/assets/images/coffee/cold/ice-capachino.png' 
+      image: '/images/images/coffee/cold/ice-capachino.png' 
     },
     { 
       id: 7, 
       name: 'Iced Hazelnut Latte', 
       description: 'Espresso, hazelnut syrup, cold milk over ice', 
       price: '670', 
-      image: '/src/assets/images/coffee/cold/hazelnut-iced.webp' 
+      image: '/images/images/coffee/cold/hazelnut-iced.webp' 
     },
     { 
       id: 8, 
       name: 'Iced Coconut Latte', 
       description: 'Espresso, coconut milk, served over ice', 
       price: '690', 
-      image: '/src/assets/images/coffee/cold/iced-coconut-latte.webp' 
+      image: '/images/images/coffee/cold/iced-coconut-latte.webp' 
     },
     { 
       id: 9, 
       name: 'Iced Matcha', 
       description: 'Blended chocolate, espresso, ice cream', 
       price: '720', 
-      image: '/src/assets/images/coffee/cold/iced-matcha.jpg' 
+      image: '/images/images/coffee/cold/iced-matcha.jpg' 
     }
   ];
 

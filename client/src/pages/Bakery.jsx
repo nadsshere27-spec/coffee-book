@@ -8,63 +8,63 @@ const Bakery = () => {
       name: 'Macarons (Per Pc)', 
       description: 'Delicate French style macarons with ganache, butter cream', 
       price: '299', 
-      image: '/src/assets/images/bakery/macroons.webp' 
+      image: '/images/images/bakery/macroons.webp' 
     },
     { 
       id: 2, 
       name: 'Tres Leches Cake Slice', 
       description: 'Indulge in our heavenly Tres Leches Cake Slice. Moist sponge', 
       price: '900', 
-      image: '/src/assets/images/bakery/tres-leches-cake.jpg' 
+      image: '/images/images/bakery/tres-leches-cake.jpg' 
     },
     { 
       id: 3, 
       name: 'Lotus Milk Cake Slice', 
       description: 'A heavenly blend of moist cake with lotus caramel', 
       price: '900', 
-      image: '/src/assets/images/bakery/lotus-milk-cake.jpg' 
+      image: '/images/images/bakery/lotus-milk-cake.jpg' 
     },
     { 
       id: 4, 
       name: 'Butter Croissant', 
       description: 'Flaky, golden, French pastry made with pure butter', 
       price: '350', 
-      image: '/src/assets/images/bakery/Butter-Croissant.jpg' 
+      image: '/images/images/bakery/Butter-Croissant.jpg' 
     },
     { 
       id: 5, 
       name: 'Chocolate Chip Cookie', 
       description: 'Soft-baked with Belgian dark chocolate chunks', 
       price: '280', 
-      image: '/src/assets/images/bakery/chocholatechip-cookies.jfif' 
+      image: '/images/images/bakery/chocholatechip-cookies.jfif' 
     },
     { 
       id: 6, 
       name: 'Cinnamon Roll', 
       description: 'Swirled with brown sugar & cream cheese frosting', 
       price: '420', 
-      image: '/src/assets/images/bakery/Cinnamon-Roll.jpg' 
+      image: '/images/images/bakery/Cinnamon-Roll.jpg' 
     },
     { 
       id: 7, 
       name: 'Almond Danish', 
       description: 'Buttery pastry with almond frangipane', 
       price: '380', 
-      image: '/src/assets/images/bakery/Almond-Danish.jfif' 
+      image: '/images/images/bakery/Almond-Danish.jfif' 
     },
     { 
       id: 8, 
       name: 'Blueberry Muffin', 
       description: 'Loaded with fresh blueberries, streusel topping', 
       price: '320', 
-      image: '/src/assets/images/bakery/Blueberry-Muffin.jfif' 
+      image: '/images/images/bakery/Blueberry-Muffin.jfif' 
     },
     { 
       id: 9, 
       name: 'Chocolate Brownie', 
       description: 'Fudgy, rich, with walnuts', 
       price: '300', 
-      image: '/src/assets/images/bakery/Chocolate-Brownie.jfif' 
+      image: '/images/images/bakery/Chocolate-Brownie.jfif' 
     }
   ];
 

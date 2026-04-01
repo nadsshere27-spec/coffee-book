@@ -13,13 +13,13 @@ const CafeMenu = () => {
     { 
       id: 2, 
       title: 'COLD COFFEE', 
-      image: '/src/assets/images/cards/22.jpeg', 
+      image: '/images/images/cards/22.jpeg', 
       link: '/cold-coffee' 
     },
     { 
       id: 3, 
       title: 'BREAKFAST', 
-      image: '/src/assets/images/cards/222.jpeg', 
+      image: '/images/images/cards/222.jpeg', 
       link: '/breakfast' 
     },
     { 

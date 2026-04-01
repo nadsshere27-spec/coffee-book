@@ -98,27 +98,27 @@ const Books = () => {
 
   // International Bestsellers - with object-contain (full image visible)
   const bestsellers = [
-    { id: 1, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', series: 'Gods & Monsters (Book 4)', year: '2026', image: '/src/assets/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
-    { id: 2, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', series: 'Thorn: Flame And Thorns (Book 1)', year: '2026', image: '/src/assets/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
-    { id: 3, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', series: 'Cosmere Novel', year: '2026', image: '/src/assets/images/books/horror/Isles-Of-The-Emberdark.png' }
+    { id: 1, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', series: 'Gods & Monsters (Book 4)', year: '2026', image: '/images/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
+    { id: 2, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', series: 'Thorn: Flame And Thorns (Book 1)', year: '2026', image: '/images/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
+    { id: 3, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', series: 'Cosmere Novel', year: '2026', image: '/images/images/books/horror/Isles-Of-The-Emberdark.png' }
   ];
 
   const fictionBooks = [
-    { id: 4, title: 'A Little Life', author: 'Hanya Yanagihara', image: '/src/assets/images/books/fiction/A-Little-Life.jfif' },
-    { id: 5, title: 'The Cruel Prince', author: 'Holly Black', series: 'The Folk Of The Air Series (Book 1)', image: '/src/assets/images/books/fiction/The-Cruel-Prince.jfif' },
-    { id: 6, title: 'Powerless', author: 'Lauren Roberts', series: 'The Powerless (Book 1)', image: '/src/assets/images/books/fiction/Powerless.jfif' }
+    { id: 4, title: 'A Little Life', author: 'Hanya Yanagihara', image: '/images/images/books/fiction/A-Little-Life.jfif' },
+    { id: 5, title: 'The Cruel Prince', author: 'Holly Black', series: 'The Folk Of The Air Series (Book 1)', image: '/images/images/books/fiction/The-Cruel-Prince.jfif' },
+    { id: 6, title: 'Powerless', author: 'Lauren Roberts', series: 'The Powerless (Book 1)', image: '/images/images/books/fiction/Powerless.jfif' }
   ];
 
   const romanceBooks = [
-    { id: 7, title: 'Before the coffee gets cold', author: 'Toshikazu Kawaguchi', image: '/src/assets/images/books/romance/Before the coffee gets cold.jfif' },
-    { id: 8, title: 'Flame And Purple Of Thorns', author: 'Marion Blackwood', image: '/src/assets/images/books/romance/Flame-And-Purple-Of-Thorns.jfif' },
-    { id: 9, title: 'We Who Have No Gods', author: 'Unknown', series: 'The Acheron Order (Book 1)', image: '/src/assets/images/books/romance/We-Who-Have-No-Gods.jfif' }
+    { id: 7, title: 'Before the coffee gets cold', author: 'Toshikazu Kawaguchi', image: '/images/images/books/romance/Before the coffee gets cold.jfif' },
+    { id: 8, title: 'Flame And Purple Of Thorns', author: 'Marion Blackwood', image: '/images/images/books/romance/Flame-And-Purple-Of-Thorns.jfif' },
+    { id: 9, title: 'We Who Have No Gods', author: 'Unknown', series: 'The Acheron Order (Book 1)', image: '/images/images/books/romance/We-Who-Have-No-Gods.jfif' }
   ];
 
   const horrorBooks = [
-    { id: 10, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', image: '/src/assets/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
-    { id: 11, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', image: '/src/assets/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
-    { id: 12, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', image: '/src/assets/images/books/horror/Isles-Of-The-Emberdark.png' }
+    { id: 10, title: 'The Wrath Of The Fallen', author: 'Amber V. Nicole', image: '/images/images/books/horror/The-Wrath-Of-The-Fallen.jfif' },
+    { id: 11, title: 'Empire Of Flame And Thorns', author: 'Amber V. Nicole', image: '/images/images/books/horror/Empire-Of-Flame-And-Thorns.jpg' },
+    { id: 12, title: 'Isles Of The Emberdark', author: 'Brandon Sanderson', image: '/images/images/books/horror/Isles-Of-The-Emberdark.png' }
   ];
 
   const currentBooks = selectedCategory ? categoryBooks[selectedCategory.id] || [] : [];
@@ -131,7 +131,7 @@ const Books = () => {
         <section className="relative h-[35vh] min-h-[250px] w-full rounded-xl overflow-hidden mb-10">
           <div className="absolute inset-0">
             <img 
-              src="/src/assets/images/library-background/landscape-library.jfif" 
+              src="/images/images/library-background/landscape-library.jfif" 
               alt="Stack of books"
               className="w-full h-full object-cover"
             />

@@ -8,63 +8,63 @@ const HotCoffee = () => {
       name: 'Espresso', 
       description: 'Strong and bold single shot', 
       price: '350', 
-      image: '/src/assets/images/coffee/hot/hot-expresso.png' 
+      image: '/images/images/coffee/hot/hot-expresso.png' 
     },
     { 
       id: 2, 
       name: 'Cappuccino', 
       description: 'Equal parts espresso, steamed milk and foam', 
       price: '450', 
-      image: '/src/assets/images/coffee/hot/hot-cappuccino.png' 
+      image: '/images/images/coffee/hot/hot-cappuccino.png' 
     },
     { 
       id: 3, 
       name: 'Latte', 
       description: 'Espresso with steamed milk and light foam', 
       price: '470', 
-      image: '/src/assets/images/coffee/hot/hot-latte.png' 
+      image: '/images/images/coffee/hot/hot-latte.png' 
     },
     { 
       id: 4, 
       name: 'Caramel Latte', 
       description: 'Espresso with caramel and steamed milk', 
       price: '480', 
-      image: '/src/assets/images/coffee/hot/hot-caramel-latte.png' 
+      image: '/images/images/coffee/hot/hot-caramel-latte.png' 
     },
     { 
       id: 5, 
       name: 'Mocha', 
       description: 'Espresso with chocolate and steamed milk', 
       price: '490', 
-      image: '/src/assets/images/coffee/hot/hot-mocha.png' 
+      image: '/images/images/coffee/hot/hot-mocha.png' 
     },
     { 
       id: 6, 
       name: 'Flat White', 
       description: 'Double espresso with silky microfoam', 
       price: '470', 
-      image: '/src/assets/images/coffee/hot/109.png' 
+      image: '/images/images/coffee/hot/109.png' 
     },
     { 
       id: 7, 
       name: 'Americano', 
       description: 'Espresso with hot water', 
       price: '380', 
-      image: '/src/assets/images/coffee/hot/hot-americano.png' 
+      image: '/images/images/coffee/hot/hot-americano.png' 
     },
     { 
       id: 8, 
       name: 'Macchiato', 
       description: 'Espresso with a dash of steamed milk', 
       price: '420', 
-      image: '/src/assets/images/coffee/hot/33333.webp' 
+      image: '/images/images/coffee/hot/33333.webp' 
     },
     { 
       id: 9, 
       name: 'Affogato', 
       description: 'Espresso poured over vanilla ice cream', 
       price: '520', 
-      image: '/src/assets/images/coffee/hot/hot-affogato.png' 
+      image: '/images/images/coffee/hot/hot-affogato.png' 
     }
   ];
 

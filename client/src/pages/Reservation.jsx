@@ -36,7 +36,7 @@ const Reservation = () => {
           {/* Hero Image inside card */}
           <div className="relative h-48 md:h-64">
             <img 
-              src="/src/assets/images/breakfast/seat.jpeg" 
+              src="/images/images/breakfast/seat.jpeg" 
               alt="Cafe table setting"
               className="w-full h-full object-cover"
             />

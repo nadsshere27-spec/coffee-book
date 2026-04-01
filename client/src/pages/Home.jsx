@@ -55,7 +55,7 @@ const Home = () => {
       <section className="relative h-[85vh] min-h-[600px] w-full overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="/src/assets/images/coffee/hot/44.jpeg" 
+            src="/images/images/coffee/hot/44.jpeg" 
             alt="Cozy cafe interior with warm lighting"
             className="w-full h-full object-cover"
           />
@@ -142,7 +142,7 @@ const Home = () => {
       {/* Image Column */}
       <div className="relative rounded-2xl overflow-hidden shadow-md aspect-square max-w-md mx-auto w-full">
         <img 
-          src="/src/assets/images/coffee/hot/8888.jpeg" 
+          src="/images/images/coffee/hot/8888.jpeg" 
           alt="Coffee cup"
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
         />
@@ -154,7 +154,7 @@ const Home = () => {
       {/* Image Column */}
       <div className="relative rounded-2xl overflow-hidden shadow-md aspect-square max-w-md mx-auto w-full order-1 md:order-none">
         <img 
-          src="/src/assets/images/coffee/hot/6555.jpeg" 
+          src="/images/images/coffee/hot/6555.jpeg" 
           alt="Stack of books"
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
         />
@@ -205,7 +205,7 @@ Each detail is designed to offer comfort, warmth, and a sense of belonging.
               className="relative rounded-2xl overflow-hidden shadow-xl"
             >
               <img 
-                src="/src/assets/images/coffee/hot/11.jpeg" 
+                src="/images/images/coffee/hot/11.jpeg" 
                 alt="Books and coffee"
                 className="w-full h-80 object-cover"
               />

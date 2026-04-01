@@ -8,63 +8,63 @@ const Breakfast = () => {
       name: 'Mexican Omelette', 
       description: 'Spicy chorizo, jalapeños, cheddar cheese, sour cream', 
       price: '1495', 
-      image: '/src/assets/images/breakfast/mexican.jpeg' 
+      image: '/images/images/breakfast/mexican.jpeg' 
     },
     { 
       id: 2, 
       name: 'Classic Waffles', 
       description: 'Fresh fruit, maple syrup, whipped cream', 
       price: '1395', 
-      image: '/src/assets/images/breakfast/waffles.jpeg' 
+      image: '/images/images/breakfast/waffles.jpeg' 
     },
     { 
       id: 3, 
       name: 'Scrambled Eggs', 
       description: 'Fluffy eggs, sourdough toast, cherry tomatoes', 
       price: '1295', 
-      image: '/src/assets/images/breakfast/scramb.jpeg' 
+      image: '/images/images/breakfast/scramb.jpeg' 
     },
     { 
       id: 4, 
       name: 'The Coffee BOOK Omelette', 
       description: 'Stuffed with mushrooms, spinach, feta cheese', 
       price: '1495', 
-      image: '/src/assets/images/breakfast/special.jpeg' 
+      image: '/images/images/breakfast/special.jpeg' 
     },
     { 
       id: 5, 
       name: 'French Toast', 
       description: 'Brioche, berries, maple syrup, powdered sugar', 
       price: '1395', 
-      image: '/src/assets/images/breakfast/french-toast.jpg' 
+      image: '/images/images/breakfast/french-toast.jpg' 
     },
     { 
       id: 6, 
       name: 'Avocado Toast', 
       description: 'Sourdough, poached eggs, chili flakes, lemon', 
       price: '1195', 
-      image: '/src/assets/images/breakfast/avacado.jpeg' 
+      image: '/images/images/breakfast/avacado.jpeg' 
     },
     { 
       id: 7, 
       name: 'Pancake Stack', 
       description: 'Fluffy pancakes, honey butter, fresh berries', 
       price: '1350', 
-      image: '/src/assets/images/breakfast/pancake-stack.webp' 
+      image: '/images/images/breakfast/pancake-stack.webp' 
     },
     { 
       id: 8, 
       name: 'Eggs Benedict', 
       description: 'Poached eggs, ham, hollandaise, English muffin', 
       price: '1595', 
-      image: '/src/assets/images/breakfast/benedict2.jpeg' 
+      image: '/images/images/breakfast/benedict2.jpeg' 
     },
     { 
       id: 9, 
       name: 'Breakfast Burrito', 
       description: 'Scrambled eggs, sausage, cheese, salsa, tortilla', 
       price: '1450', 
-      image: '/src/assets/images/breakfast/555.jpeg' 
+      image: '/images/images/breakfast/555.jpeg' 
     }
   ];
 
