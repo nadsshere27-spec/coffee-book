@@ -23,7 +23,7 @@ const Breakfast = () => {
   useEffect(() => {
     const fetchBreakfast = async () => {
       try {
-        const response = await menuAPI.getByCategory('breakfast');
+        const response = await menuAPI.getBreakfast();
         if (response.data && response.data.data && response.data.data.length > 0) {
           setItems(response.data.data);
         } else {

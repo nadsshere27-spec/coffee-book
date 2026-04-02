@@ -23,7 +23,7 @@ const HotCoffee = () => {
   useEffect(() => {
     const fetchHotCoffee = async () => {
       try {
-        const response = await menuAPI.getByCategory('hot');
+        const response = await menuAPI.getHotCoffee();
         if (response.data && response.data.data && response.data.data.length > 0) {
           setItems(response.data.data);
         } else {

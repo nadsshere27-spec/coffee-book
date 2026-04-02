@@ -52,6 +52,12 @@ export const menuAPI = {
   
   // Get single menu item
   getById: (id) => api.get(`/menu/${id}`),
+  
+  // ✅ ADDED: Specific category endpoints
+  getHotCoffee: () => api.get('/menu/hot-coffee'),
+  getColdCoffee: () => api.get('/menu/cold-coffee'),
+  getBreakfast: () => api.get('/menu/breakfast'),
+  getBakery: () => api.get('/menu/bakery'),
 };
 
 // ========== BAKERY API ==========
