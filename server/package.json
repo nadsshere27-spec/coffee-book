@@ -9,6 +9,7 @@
     "server": "nodemon index.js"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "compression": "^1.8.1",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
