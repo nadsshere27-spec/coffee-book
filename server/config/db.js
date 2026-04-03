@@ -16,8 +16,8 @@ const dbLogger = {
 
 // Updated connection options
 const connectionOptions = {
-  serverSelectionTimeoutMS: 8000,
-  socketTimeoutMS: 45000,
+  serverSelectionTimeoutMS: 15000,  // increased from 8000
+  socketTimeoutMS: 60000,           // increased from 45000
   maxPoolSize: 20,
   minPoolSize: 5,
   retryWrites: true,
@@ -29,8 +29,8 @@ const connectionOptions = {
 let connectionState = {
   isConnected: false,
   retryCount: 0,
-  maxRetries: 3,
-  retryDelay: 3000,
+  maxRetries: 5,        // increased from 3
+  retryDelay: 5000,     // increased from 3000
 };
 
 // Connect to MongoDB
@@ -54,14 +54,15 @@ const connectDB = async () => {
     
     if (connectionState.retryCount < connectionState.maxRetries) {
       connectionState.retryCount++;
-      dbLogger.warn(`Retry ${connectionState.retryCount}/${connectionState.maxRetries}`);
+      dbLogger.warn(`Retry ${connectionState.retryCount}/${connectionState.maxRetries} in ${connectionState.retryDelay / 1000}s...`);
       
       setTimeout(() => {
         connectDB();
       }, connectionState.retryDelay);
     } else {
-      dbLogger.error('Maximum retries reached. Exiting...');
-      process.exit(1);
+      // ✅ Don't exit — keep server alive so API still responds
+      dbLogger.error('Maximum retries reached. Server will continue without DB.');
+      dbLogger.warn('Some API routes may not work until DB reconnects.');
     }
   }
 };
@@ -83,6 +84,7 @@ const setupEventListeners = () => {
     
     setTimeout(() => {
       if (!connectionState.isConnected) {
+        connectionState.retryCount = 0; // ✅ reset retry count on disconnect
         connectDB();
       }
     }, 3000);
