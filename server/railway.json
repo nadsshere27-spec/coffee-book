@@ -3,8 +3,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd server && npm start",
-    "restartPolicyType": "ON_FAILURE",
-    "healthcheckPath": "/health"
+    "startCommand": "cd server && node index.js",
+    "restartPolicyType": "ON_FAILURE"
   }
 }
