@@ -38,7 +38,8 @@ const allowedOrigins = [
   'http://localhost:5174',
   'http://localhost:5175',
   'http://localhost:5176',
-  'https://coffee-book-eight.vercel.app'
+  'https://coffee-book-eight.vercel.app',
+  'https://sparkling-possibility.up.railway.app'
 ];
 
 app.use(cors({
@@ -164,7 +165,6 @@ app.use((err, req, res, next) => {
 // ==================== START SERVER ====================
 
 const startServer = async () => {
-  // ✅ Listen FIRST on 0.0.0.0 so Railway's healthcheck can reach /health immediately
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`
 ╔══════════════════════════════════════════════════════════╗
@@ -180,13 +180,11 @@ const startServer = async () => {
     `.cyan);
   });
 
-  // ✅ Connect to DB after server is already listening
   try {
     await connectDB();
     console.log('✅ Database connected successfully'.green);
   } catch (error) {
     console.error(`❌ DB connection failed: ${error.message}`.red);
-    // ✅ Do NOT call process.exit() — keep server alive so healthcheck keeps passing
   }
 };
 
