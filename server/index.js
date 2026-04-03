@@ -39,7 +39,8 @@ const allowedOrigins = [
   'http://localhost:5175',
   'http://localhost:5176',
   'https://coffee-book-eight.vercel.app',
-  'https://sparkling-possibility.up.railway.app'
+  'https://sparkling-possibility.up.railway.app',
+  'https://sparkling-possibility-production-cbdd.up.railway.app'
 ];
 
 app.use(cors({
