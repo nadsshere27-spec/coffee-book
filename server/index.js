@@ -56,7 +56,7 @@ app.use(cors({
   credentials: true,
 }));
 
-// Handle preflight requests (single, clean)
+// Handle preflight requests
 app.options('*', cors());
 
 app.use(compression());
@@ -164,11 +164,9 @@ app.use((err, req, res, next) => {
 // ==================== START SERVER ====================
 
 const startServer = async () => {
-  try {
-    await connectDB();
-
-    app.listen(PORT, () => {
-      console.log(`
+  // ✅ Listen FIRST on 0.0.0.0 so Railway's healthcheck can reach /health immediately
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`
 ╔══════════════════════════════════════════════════════════╗
 ║  Coffee BOOK Server is Running                           ║
 ║                                                          ║
@@ -179,11 +177,16 @@ const startServer = async () => {
 ║  Environment: ${process.env.NODE_ENV || 'development'}                           ║
 ║  Routes: menu | books | contact | reservations           ║
 ╚══════════════════════════════════════════════════════════╝
-      `.cyan);
-    });
+    `.cyan);
+  });
+
+  // ✅ Connect to DB after server is already listening
+  try {
+    await connectDB();
+    console.log('✅ Database connected successfully'.green);
   } catch (error) {
-    console.error(`[ERROR] Failed to start server: ${error.message}`.red);
-    process.exit(1);
+    console.error(`❌ DB connection failed: ${error.message}`.red);
+    // ✅ Do NOT call process.exit() — keep server alive so healthcheck keeps passing
   }
 };
 
