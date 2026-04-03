@@ -43,7 +43,6 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, etc)
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
@@ -57,10 +56,7 @@ app.use(cors({
   credentials: true,
 }));
 
-// Handle preflight requests
-app.options('*', cors());
-
-// ✅ Handle preflight requests (ADD THIS LINE)
+// Handle preflight requests (single, clean)
 app.options('*', cors());
 
 app.use(compression());
@@ -78,7 +74,7 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// Custom request logger (professional)
+// Custom request logger
 app.use((req, res, next) => {
   const start = Date.now();
   res.on('finish', () => {
@@ -88,17 +84,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// ==================== ROUTES ====================
-
-app.get('/health', async (req, res) => {
-  const dbHealth = await checkDatabaseHealth();
-  res.json({
+// ==================== HEALTH CHECK (FAST, NO DB DEPENDENCY) ====================
+app.get('/health', (req, res) => {
+  res.status(200).json({
     status: 'healthy',
     uptime: process.uptime(),
     timestamp: new Date().toISOString(),
-    database: dbHealth,
+    service: 'coffee-book-api'
   });
 });
+
+// ==================== ROUTES ====================
 
 app.get('/api/status', async (req, res) => {
   const dbStats = getConnectionStats();
