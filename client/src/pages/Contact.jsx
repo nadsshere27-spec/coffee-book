@@ -116,7 +116,7 @@ const Contact = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
         >
           <div className="bg-[#FAF1E2] rounded-2xl p-8 text-center">
-            <span className="text-4xl mb-3 block">☕</span>
+            <span className="text-4xl mb-3 block"></span>
             <h3 className="text-xl font-serif text-[#4A2C2C] mb-3">Our Story</h3>
             <p className="text-[#7B4B3A] text-sm leading-relaxed">
               Born and brewed in Lahore, Coffee BOOK is where coffee meets books. 
@@ -124,7 +124,7 @@ const Contact = () => {
             </p>
           </div>
           <div className="bg-[#FAF1E2] rounded-2xl p-8 text-center">
-            <span className="text-4xl mb-3 block">📖</span>
+            <span className="text-4xl mb-3 block"></span>
             <h3 className="text-xl font-serif text-[#4A2C2C] mb-3">Our Promise</h3>
             <p className="text-[#7B4B3A] text-sm leading-relaxed">
               Every cup tells a story. Every book finds a reader. 

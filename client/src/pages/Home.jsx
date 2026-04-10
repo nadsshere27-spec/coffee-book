@@ -228,7 +228,7 @@ Each detail is designed to offer comfort, warmth, and a sense of belonging.
               className="bg-white/60 backdrop-blur-sm border border-white/40 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500"
             >
               <div className="flex justify-center mb-4">
-                <span className="text-5xl">⏰</span>
+                <span className="text-5xl"></span>
               </div>
               <h2 className="text-2xl font-serif text-[#4A2C2C] text-center mb-6">Opening Hours</h2>
               <div className="space-y-3">

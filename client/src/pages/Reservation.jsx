@@ -301,9 +301,9 @@ const Reservation = () => {
           className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4"
         >
           {[
-            { icon: '⏰', title: 'Hold Time', desc: 'Tables held for 15 minutes' },
-            { icon: '🕊️', title: 'No Cancellation Fee', desc: 'Just let us know if plans change' },
-            { icon: '🪑', title: 'Maximum Guests', desc: 'Up to 10 guests per table' }
+            { icon: '', title: 'Hold Time', desc: 'Tables held for 15 minutes' },
+            { icon: '', title: 'No Cancellation Fee', desc: 'Just let us know if plans change' },
+            { icon: '', title: 'Maximum Guests', desc: 'Up to 10 guests per table' }
           ].map((item, index) => (
             <Motion.div
               key={index}
