@@ -99,13 +99,13 @@ const Home = () => {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <Link to="/cafe-menu">
-                  <Button variant="primary" size="lg" className="bg-[#C4A35A] hover:bg-[#B87C4B] text-white min-w-[160px]">
+                  <Button variant="primary" size="lg" className="bg-[#C4A35A] hover:bg-[#B87C4B] text-white min-w-[162px]">
                     EXPLORE MENU
                   </Button>
                 </Link>
                 <Link to="/reservation">
-                  <Button variant="secondary" size="lg" className="border-2 border-white text-white hover:bg-white/20 min-w-[160px]">
-                    RESERVE A TABLE
+                  <Button variant="secondary" size="lg" className="border-2 border-white text-white hover:bg-white/20 min-w-[162px]">
+                    RESERVE TABLE
                   </Button>
                 </Link>
               </Motion.div>
@@ -254,7 +254,7 @@ Each detail is designed to offer comfort, warmth, and a sense of belonging.
               className="bg-white/60 backdrop-blur-sm border border-white/40 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500"
             >
               <div className="flex justify-center mb-4">
-                <span className="text-5xl">📞</span>
+                <span className="text-5xl"></span>
               </div>
               <h2 className="text-2xl font-serif text-[#4A2C2C] text-center mb-6">Contact Us</h2>
               <div className="space-y-4 text-center">

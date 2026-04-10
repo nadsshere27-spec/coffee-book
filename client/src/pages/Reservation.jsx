@@ -286,7 +286,7 @@ const Reservation = () => {
                     Booking...
                   </span>
                 ) : (
-                  'Confirm Reservation 📖'
+                  'Confirm Reservation'
                 )}
               </button>
             </form>

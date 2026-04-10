@@ -23,31 +23,31 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? 'bg-white/95 shadow-sm py-3' : 'bg-transparent py-5'
+      scrolled ? 'bg-white/95 shadow-sm py-3 md:py-4' : 'bg-transparent py-5 md:py-6'
     }`}>
-      <div className="container mx-auto px-6 md:px-8 lg:px-12">
+      <div className="w-full">
         <div className="flex items-center justify-between">
           
-          {/* Logo - Image */}
-          <Link to="/" className="flex items-center">
+          {/* Logo - Mobile: h-14, Desktop: h-16 */}
+          <Link to="/" className="flex items-center pl-0 md:pl-1">
             <img 
               src="/images/images/logo/cafe-logo-2.png" 
               alt="Coffee BOOK Logo"
-              className="max-h-14 w-auto" 
+              className="w-auto h-14 md:h-16" 
             />
           </Link>
 
-          {/* Navigation Links - Top Right Corner */}
-          <div className="flex items-center gap-6 md:gap-8 lg:gap-10">
+          {/* Navigation Links - Mobile: gap-3, Desktop: gap-8 */}
+          <div className="flex items-center gap-3 md:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-xs md:text-sm tracking-wider transition-colors duration-300 ${
+                className={`text-xs md:text-sm tracking-wider transition-colors duration-300 whitespace-nowrap ${
                   location.pathname === link.path
                     ? 'text-[#C4A35A]'
                     : 'text-[#4A2C2C] hover:text-[#C4A35A]'
-                }`}
+                } ${link.label === 'RESERVE' ? 'mr-4 md:mr-8' : ''}`}
               >
                 {link.label}
               </Link>

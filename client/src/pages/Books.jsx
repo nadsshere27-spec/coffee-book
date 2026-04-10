@@ -344,7 +344,7 @@ const Books = () => {
 
         {/* Reading Corner Note */}
         <div className="mt-10 p-5 bg-gradient-to-r from-[#4A2C2C] to-[#2C1A1A] rounded-xl text-center text-white">
-          <span className="text-3xl mb-1 block">🪑</span>
+          <span className="text-3xl mb-1 block"></span>
           <h3 className="font-serif text-lg mb-1">The Reading Corner</h3>
           <p className="text-[#E8DCCC] text-xs max-w-2xl mx-auto">
             All books are available to read in our cafe. Grab your favorite, order a coffee, 
